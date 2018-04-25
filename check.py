@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 from __future__ import print_function
-from checks import check_all
+from checks import check_all, check_all_dict
+import json
 import os
 import sys
 
 def main(pkg):
+    print("Checking", pkg)
     results = check_all(pkg)
     ok = True
     for r in results:
@@ -24,9 +26,15 @@ def main(pkg):
 
     return ok
 
+
+def json_main(pkg):
+    res = check_all_dict(pkg)
+    print(json.dumps(res, indent=4))
+    return res["ok"]
+
 if __name__ == "__main__":
     pkg = sys.argv[1]
-    if main(pkg):
+    if json_main(pkg):
         sys.exit(0)
     else:
         sys.exit(1)
