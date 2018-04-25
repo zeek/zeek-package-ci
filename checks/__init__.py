@@ -5,10 +5,12 @@ from checks.types import CheckResult
 
 from checks.license import check_license
 from checks.readme import check_readme
+from checks.build_command import check_build_command
 
 CHECKS = [
     check_license,
     check_readme,
+    check_build_command,
 ]
 
 def check_all(pkg):
