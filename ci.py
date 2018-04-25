@@ -19,6 +19,7 @@ class cd:
         os.chdir(self.savedPath)
 
 
+PACKAGE_DIR = "./packages"
 AGGREGATE_PATH = os.path.expanduser("~/.bro-pkg/scratch/aggregate.meta")
 
 def load_aggregate(path=AGGREGATE_PATH):
@@ -35,7 +36,7 @@ def load_aggregate(path=AGGREGATE_PATH):
 def package_dir(package):
     name = package["name"]
     dir_name = name.replace("/","_")
-    return dir_name
+    return os.path.join(PACKAGE_DIR, dir_name)
 
 def clone(package):
     name = package["name"]
@@ -52,7 +53,6 @@ def clone_all():
     metadata = load_aggregate()
     for package in metadata:
         print(package['name'], package['description'])
-        pprint.pprint(package)
         print()
         clone(package)
 
