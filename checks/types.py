@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-from __future__ import print_function
 
 class CheckResult():
     def __init__(self, name, ok=True, info=None, errors=None):
