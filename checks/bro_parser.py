@@ -43,7 +43,7 @@ def expand_load(bro_scripts):
         todo = next_todo
     return all_bro_scripts
 
-DELIMS = set("\t (){}|;")
+DELIMS = set("\t (){}|:;")
 def tokenize_line(line):
     """Tokenize a bro line.
     This sucks, but should work well enough to tell code from 
