@@ -1,4 +1,6 @@
 import os
+import sys
+
 def bro_files(root_dir):
     """Return all .bro scripts inside root_dir
        including scripts that are @load'ed from other bro scripts
@@ -20,15 +22,25 @@ def bro_files(root_dir):
         return expand_load(all_bro_scripts)
 
 def extract_load(bro_script):
+    if not os.path.exists(bro_script):
+        return []
     loaded = []
     base_dir = os.path.dirname(bro_script)
-    with open(bro_script) as f:
+    with open(bro_script, errors='replace') as f:
         for line in f:
             if line.lstrip().startswith("@load"):
                 arg = line.split("@load")[1]
                 arg = arg.split("#")[0] # strip any comment
                 arg = arg.strip()
-                loaded.append(os.path.join(base_dir, arg))
+                full_path = os.path.join(base_dir, arg)
+                if os.path.isfile(full_path + ".bro"):
+                    full_path = full_path + ".bro"
+
+                if os.path.isdir(full_path):
+                    # Nothing to do, as this directory would have been included already by bro_files
+                    pass
+                else:
+                    loaded.append(full_path)
     return loaded
 
 def expand_load(bro_scripts):
@@ -38,8 +50,10 @@ def expand_load(bro_scripts):
         next_todo = []
         for f in todo:
             loaded_scripts = extract_load(f)
-            all_bro_scripts.extend(loaded_scripts)
-            next_todo.extend(loaded_scripts)
+            normalized = [os.path.normpath(fn) for fn in loaded_scripts]
+            not_seen = set(normalized) - set(all_bro_scripts)
+            next_todo.extend(not_seen)
+            all_bro_scripts.extend(not_seen)
         todo = next_todo
     return all_bro_scripts
 
@@ -73,7 +87,9 @@ def tokenize_line(line):
             
 
 def bro_tokens(fn):
-    with open(fn) as f:
+    if not os.path.exists(fn):
+        return
+    with open(fn, errors='replace') as f:
         for n, line in enumerate(f, start=1):
             line = line.rstrip()
             yield n, line, list(tokenize_line(line))

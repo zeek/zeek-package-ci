@@ -11,11 +11,11 @@ def check_bad_extension(pkg):
     bad = []
     for f in loaded_files:
         fn, ext = os.path.splitext(f)
-        if ext.lower() not in (".bro", ".sig"):
+        if os.path.exists(f) and ext.lower() not in (".bro", ".sig"):
             bad.append(f)
 
     if not bad:
         return CheckResult(NAME, True)
     
-    msg = "Package contains files with incorrect extensions: {}".format(', '.join(bad))
+    msg = "Package loads files with incorrect extensions: {}".format(', '.join(bad))
     return CheckResult(NAME, False, errors=[msg])
