@@ -7,7 +7,7 @@ import sys
 
 import argparse
 
-def main(pkg):
+def txt_main(pkg):
     print("Checking", pkg)
     results = check_all(pkg)
     ok = True
@@ -25,6 +25,12 @@ def main(pkg):
             print ("Errors:")
             for e in r.errors:
                 print(e)
+            print()
+        if r.warnings:
+            print ("Warnings:")
+            for e in r.warnings:
+                print(e)
+            print()
 
     return ok
 
@@ -45,13 +51,21 @@ def main():
     parser.add_argument('--quiet', dest='quiet', action='store_true',
                         default=False,
                         help='be quiet')
+    parser.add_argument('--json', dest='json', action='store_true',
+                        default=False,
+                        help='output using json')
     parser.add_argument('--pretty', dest='pretty', action='store_true',
                         default=False,
                         help='be pretty')
 
     args = parser.parse_args()
 
-    if json_main(args.package, args.quiet, args.pretty):
+    if args.json:
+        ret = json_main(args.package, args.quiet, args.pretty)
+    else:
+        ret = txt_main(args.package)
+
+    if ret:
         sys.exit(0)
     else:
         sys.exit(1)
