@@ -7,7 +7,7 @@ from checks.license import check_license
 from checks.readme import check_readme
 from checks.build_command import check_build_command
 from checks.bad_extension import check_bad_extension
-from checks.bad_events import check_bad_events
+from checks.expensive_events import check_expensive_events
 from checks.unsafe_functions import check_unsafe_functions
 
 CHECKS = [
@@ -15,7 +15,7 @@ CHECKS = [
     check_readme,
     check_build_command,
     check_bad_extension,
-    check_bad_events,
+    check_expensive_events,
     check_unsafe_functions,
 ]
 
