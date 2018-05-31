@@ -12,4 +12,4 @@ def check_build_command(pkg):
         return CheckResult(NAME, True)
     bc = md['build_command']
     msg = "Package contains build command: {!r}".format(bc)
-    return CheckResult(NAME, False, warnings=[msg])
+    return CheckResult(NAME, True, warnings=[msg])
