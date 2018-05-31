@@ -1,5 +1,9 @@
 import os
 def bro_files(root_dir):
+    """Return all .bro scripts inside root_dir
+       including scripts that are @load'ed from other bro scripts
+       but do not have a .bro extension
+    """
     all_bro_scripts = []
     other_files = []
     for root, dirs, files in os.walk(root_dir):
@@ -38,3 +42,38 @@ def expand_load(bro_scripts):
             next_todo.extend(loaded_scripts)
         todo = next_todo
     return all_bro_scripts
+
+DELIMS = set("\t (){}|;")
+def tokenize_line(line):
+    """Tokenize a bro line.
+    This sucks, but should work well enough to tell code from 
+    comments and strings"""
+
+    in_string = False
+    tok = ''
+    prev_ch = ''
+    for idx, ch in enumerate(line):
+        if ch == '"' and prev_ch != '\\':
+            in_string = not in_string
+            if not in_string:
+                yield 'STRING', tok
+                tok=''
+        elif ch == '#' and not in_string:
+            yield 'COMMENT', line[idx:]
+            return
+        elif in_string:
+            tok += ch
+        elif ch in DELIMS:
+            if tok:
+                yield 'TOKEN', tok
+            tok=''
+        else:
+            tok += ch
+        prev_ch = ch
+            
+
+def bro_tokens(fn):
+    with open(fn) as f:
+        for n, line in enumerate(f, start=1):
+            line = line.rstrip()
+            yield n, line, list(tokenize_line(line))

@@ -1,4 +1,4 @@
 event bro_init()
 {
-    system("echo bad!");
+    system("echo bad!"); #wee
 }
