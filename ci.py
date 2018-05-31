@@ -23,7 +23,7 @@ PACKAGE_DIR = "./packages"
 AGGREGATE_PATH = os.path.expanduser("~/.bro-pkg/scratch/aggregate.meta")
 
 def load_aggregate(path=AGGREGATE_PATH):
-    #subprocess.check_call(["bro-pkg", "refresh"])
+    subprocess.check_call(["bro-pkg", "refresh"])
     metadata_parser = configparser.RawConfigParser()
     if not metadata_parser.read(path):
         raise Exception("Can't parse {}".format(path))
