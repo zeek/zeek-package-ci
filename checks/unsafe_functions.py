@@ -11,7 +11,8 @@ UNSAFE_FUNCTIONS = set([
     "system_env",
     "piped_exec",
     "execute_with_notice",
-    "sendmail"
+    "sendmail",
+    "open",
 ])
 
 def check_unsafe_functions(pkg):
