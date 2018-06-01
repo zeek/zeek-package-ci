@@ -17,10 +17,11 @@ def txt_main(pkg):
         else:
             print (r.name, "FAIL")
             ok = False
-        print ("Info:")
-        for i in r.info:
-            print(i)
-        print()
+        if r.info:
+            print ("Info:")
+            for i in r.info:
+                print(i)
+            print()
         if r.errors:
             print ("Errors:")
             for e in r.errors:
