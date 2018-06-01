@@ -13,6 +13,7 @@ UNSAFE_FUNCTIONS = set([
     "execute_with_notice",
     "sendmail",
     "open",
+    "open_for_append",
 ])
 
 def check_unsafe_functions(pkg):
