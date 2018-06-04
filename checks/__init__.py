@@ -9,6 +9,7 @@ from checks.build_command import check_build_command
 from checks.bad_extension import check_bad_extension
 from checks.expensive_events import check_expensive_events
 from checks.unsafe_functions import check_unsafe_functions
+from checks.charset import check_charset
 
 CHECKS = [
     check_license,
@@ -17,6 +18,7 @@ CHECKS = [
     check_bad_extension,
     check_expensive_events,
     check_unsafe_functions,
+    check_charset,
 ]
 
 def check_all(pkg):
