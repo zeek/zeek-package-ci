@@ -5,6 +5,7 @@ from .types import CheckResult
 from ..bro_parser import bro_files, bro_tokens
 
 NAME = "expensive_events"
+DESCRIPTION = "Check if any loaded bro scripts are handling expensive events"
 
 expensive_eventS = set([
     "new_packet",
@@ -36,4 +37,4 @@ def check_expensive_events(pkg):
                     msg = "{}:{} expensive event {}".format(f, n, token)
                     bad.append(msg)
     
-    return CheckResult(NAME, ok=True, warnings=bad)
+    return CheckResult(NAME, DESCRIPTION, ok=True, warnings=bad)

@@ -5,6 +5,7 @@ from .types import CheckResult
 from ..bro_parser import bro_files, bro_tokens
 
 NAME = "unsafe_functions"
+DESCRIPTION = "Check if any loaded bro scripts are calling potentially unsafe functions"
 
 UNSAFE_FUNCTIONS = set([
     "system",
@@ -26,4 +27,4 @@ def check_unsafe_functions(pkg):
                     msg = "{}:{} unsafe function {}".format(f, n, token)
                     bad.append(msg)
     
-    return CheckResult(NAME, ok=True, warnings=bad)
+    return CheckResult(NAME, DESCRIPTION, ok=True, warnings=bad)

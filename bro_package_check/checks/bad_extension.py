@@ -5,6 +5,7 @@ from .types import CheckResult
 from ..bro_parser import bro_files
 
 NAME = "bad_extension"
+DESCRIPTION = "Check if any loaded bro scripts have an extension other than .bro or .sig"
 
 def check_bad_extension(pkg):
     loaded_files = bro_files(pkg)
@@ -15,7 +16,7 @@ def check_bad_extension(pkg):
             bad.append(f)
 
     if not bad:
-        return CheckResult(NAME, True)
+        return CheckResult(NAME, DESCRIPTION, True)
     
     msg = "Package loads files with incorrect extensions: {}".format(', '.join(bad))
-    return CheckResult(NAME, False, errors=[msg])
+    return CheckResult(NAME, DESCRIPTION, False, errors=[msg])

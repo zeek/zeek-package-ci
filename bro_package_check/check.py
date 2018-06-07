@@ -13,9 +13,9 @@ def txt_main(pkg):
     ok = True
     for r in results:
         if r.ok:
-            print (r.name, "OK")
+            print ("{}: ({}): {}".format(r.name, r.description, "OK"))
         else:
-            print (r.name, "FAIL")
+            print ("{}: ({}): {}".format(r.name, r.description, "FAIL"))
             ok = False
         if r.info:
             print ("Info:")

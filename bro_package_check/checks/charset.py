@@ -6,6 +6,7 @@ from .types import CheckResult
 from ..bro_parser import bro_files
 
 NAME = "charset"
+DESCRIPTION = "Check if any loaded bro scripts contain non ascii characters"
 
 printable = set(string.printable)
 
@@ -24,4 +25,4 @@ def check_charset(pkg):
                     msg = "{}:{} non ascii characters".format(fn, n)
                     bad.append(msg)
 
-    return CheckResult(NAME, ok=True, warnings=bad)
+    return CheckResult(NAME, DESCRIPTION, ok=True, warnings=bad)

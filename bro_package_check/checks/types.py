@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
 class CheckResult():
-    def __init__(self, name, ok=True, info=None, warnings=None, errors=None):
+    def __init__(self, name, description="", ok=True, info=None, warnings=None, errors=None):
         self.name = name
+        self.description = description
         self.ok = ok
         self.info = [] if info is None else info
         self.warnings = [] if warnings is None else warnings
@@ -14,6 +15,7 @@ class CheckResult():
     def to_json(self):
         return {
             "name": self.name,
+            "description": self.description,
             "ok": self.ok,
             "info": self.info,
             "warnings": self.warnings,
