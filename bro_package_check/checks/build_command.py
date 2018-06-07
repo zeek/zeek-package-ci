@@ -2,7 +2,7 @@
 import os
 import sys
 from .types import CheckResult
-from .bropkg import get_metadata
+from ..bropkg import get_metadata
 
 NAME = "build_command"
 

@@ -2,7 +2,7 @@
 import os
 import sys
 from .types import CheckResult
-from .bro_parser import bro_files, bro_tokens
+from ..bro_parser import bro_files, bro_tokens
 
 NAME = "expensive_events"
 

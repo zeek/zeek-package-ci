@@ -2,7 +2,7 @@
 import os
 import sys
 from .types import CheckResult
-from .bro_parser import bro_files
+from ..bro_parser import bro_files
 
 NAME = "bad_extension"
 
