@@ -44,7 +44,7 @@ def extract_load(bro_script):
     return loaded
 
 def expand_load(bro_scripts):
-    all_bro_scripts = bro_scripts
+    all_bro_scripts = [os.path.normpath(fn) for fn in bro_scripts]
     todo = bro_scripts
     while todo:
         next_todo = []
