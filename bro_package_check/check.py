@@ -47,7 +47,7 @@ def json_main(pkg, quiet=False, pretty=False):
 def main():
 
     parser = argparse.ArgumentParser(description='Check bro packages')
-    parser.add_argument('package', metavar='N', type=str,
+    parser.add_argument('package', metavar='package_directory', type=str,
                         help='bro package to check')
     parser.add_argument('--quiet', dest='quiet', action='store_true',
                         default=False,
