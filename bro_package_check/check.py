@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import print_function
-from checks import check_all, check_all_dict
+from .checks import check_all, check_all_dict
 import json
 import os
 import sys

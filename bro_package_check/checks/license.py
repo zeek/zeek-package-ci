@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os
 import sys
-from checks.types import CheckResult
+from .types import CheckResult
 
 NAME = "license"
 LICENSE_FILENAMES = ["LICENSE", "COPYING"]

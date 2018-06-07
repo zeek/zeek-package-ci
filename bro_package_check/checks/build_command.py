@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 import os
 import sys
-from checks.types import CheckResult
-from checks.bropkg import get_metadata
+from .types import CheckResult
+from .bropkg import get_metadata
 
 NAME = "build_command"
 

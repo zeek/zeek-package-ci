@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 import os
 import sys
-from checks.types import CheckResult
+from .types import CheckResult
 
-from checks.license import check_license
-from checks.readme import check_readme
-from checks.build_command import check_build_command
-from checks.bad_extension import check_bad_extension
-from checks.expensive_events import check_expensive_events
-from checks.unsafe_functions import check_unsafe_functions
-from checks.charset import check_charset
+from .license import check_license
+from .readme import check_readme
+from .build_command import check_build_command
+from .bad_extension import check_bad_extension
+from .expensive_events import check_expensive_events
+from .unsafe_functions import check_unsafe_functions
+from .charset import check_charset
 
 CHECKS = [
     check_license,

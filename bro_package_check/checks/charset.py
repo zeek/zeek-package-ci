@@ -2,8 +2,8 @@
 import os
 import string
 import sys
-from checks.types import CheckResult
-from checks.bro_parser import bro_files
+from .types import CheckResult
+from .bro_parser import bro_files
 
 NAME = "charset"
 
