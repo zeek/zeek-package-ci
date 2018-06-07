@@ -1,9 +1,9 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(name='bro-package-ci',
-    version='0.2.0',
+    version='0.3.0',
     zip_safe=True,
-    py_modules = ["dumbno"],
+    packages=find_packages(),
     install_requires=[],
     entry_points = {
         'console_scripts': [
