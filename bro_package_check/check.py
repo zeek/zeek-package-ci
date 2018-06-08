@@ -62,10 +62,10 @@ def main():
     args = parser.parse_args()
 
     if args.json:
-        ret = json_main(args.package, args.quiet, args.pretty)
-    else:
-        ret = txt_main(args.package)
+        json_main(args.package, args.quiet, args.pretty)
+        sys.exit(0) # always exit success in json mode
 
+    ret = txt_main(args.package)
     if ret:
         sys.exit(0)
     else:
