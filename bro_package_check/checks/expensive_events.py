@@ -5,7 +5,7 @@ from .types import CheckResult
 from ..bro_parser import bro_files, bro_tokens
 
 NAME = "expensive_events"
-DESCRIPTION = "Check if any loaded bro scripts are handling expensive events"
+DESCRIPTION = "Check if any loaded bro scripts are handling expensive events such new_packet or raw_packet"
 
 expensive_eventS = set([
     "new_packet",
@@ -20,7 +20,6 @@ expensive_eventS = set([
     "teredo_origin_indication",
     "teredo_authentication",
     "teredo_packet",
-    "new_event",
     "packet_contents",
     "ipv6_ext_headers",
     "raw_packet",
