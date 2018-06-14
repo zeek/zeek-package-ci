@@ -4,10 +4,10 @@ import sys
 from .types import CheckResult
 from ..bro_parser import bro_files
 
-NAME = "bad_extension"
+NAME = "incorrect_file_extension"
 DESCRIPTION = "Check if any loaded bro scripts have an extension other than .bro or .sig"
 
-def check_bad_extension(pkg):
+def check_incorrect_file_extension(pkg):
     loaded_files = bro_files(pkg)
     bad = []
     for f in loaded_files:

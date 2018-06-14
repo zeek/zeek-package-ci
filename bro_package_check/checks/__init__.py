@@ -6,7 +6,7 @@ from .types import CheckResult
 from .license import check_license
 from .readme import check_readme
 from .build_command import check_build_command
-from .bad_extension import check_bad_extension
+from .incorrect_file_extension import check_incorrect_file_extension
 from .expensive_events import check_expensive_events
 from .unsafe_functions import check_unsafe_functions
 from .charset import check_charset
@@ -15,7 +15,7 @@ CHECKS = [
     check_license,
     check_readme,
     check_build_command,
-    check_bad_extension,
+    check_incorrect_file_extension,
     check_expensive_events,
     check_unsafe_functions,
     check_charset,
