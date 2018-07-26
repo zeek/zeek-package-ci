@@ -57,6 +57,9 @@ def expand_load(bro_scripts):
         todo = next_todo
     return all_bro_scripts
 
+def is_regex(s):
+    return s.startswith("/") and s.endswith("/") and len(s) > 2
+
 DELIMS = set("\t (){}|:;")
 def tokenize_line(line):
     """Tokenize a bro line.
@@ -77,9 +80,14 @@ def tokenize_line(line):
             return
         elif in_string:
             tok += ch
-        elif ch in DELIMS:
+        elif ch in DELIMS or idx == len(line)-1:
+            if ch not in DELIMS:
+                tok += ch
             if tok:
-                yield 'TOKEN', tok
+                if is_regex(tok):
+                    yield 'REGEX', tok
+                else:
+                    yield 'TOKEN', tok
             tok=''
         else:
             tok += ch
