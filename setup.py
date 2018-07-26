@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='bro-package-ci',
-    version='0.5.0',
+    version='0.6.0',
     zip_safe=True,
     packages=find_packages(),
     install_requires=[],

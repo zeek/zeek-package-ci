@@ -10,6 +10,7 @@ from .incorrect_file_extension import check_incorrect_file_extension
 from .expensive_events import check_expensive_events
 from .unsafe_functions import check_unsafe_functions
 from .charset import check_charset
+from .dns_resolution import check_dns_resolution
 
 CHECKS = [
     check_license,
@@ -19,6 +20,7 @@ CHECKS = [
     check_expensive_events,
     check_unsafe_functions,
     check_charset,
+    check_dns_resolution,
 ]
 
 def check_all(pkg):
