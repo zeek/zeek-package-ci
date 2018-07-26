@@ -7,7 +7,7 @@ from ..bro_parser import bro_files, bro_tokens
 NAME = "expensive_events"
 DESCRIPTION = "Check if any loaded bro scripts are handling expensive events such new_packet or raw_packet"
 
-expensive_eventS = set([
+expensive_events = set([
     "new_packet",
     "tcp_packet",
     "tcp_option",
@@ -32,7 +32,7 @@ def check_expensive_events(pkg):
     for f in loaded_files:
         for n, line, tokens in bro_tokens(f):
             for token_type, token in tokens:
-                if token_type == 'TOKEN' and token in expensive_eventS:
+                if token_type == 'TOKEN' and token in expensive_events:
                     msg = "{}:{} expensive event {}".format(f, n, token)
                     bad.append(msg)
     
