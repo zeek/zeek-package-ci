@@ -52,7 +52,7 @@ def clone(package):
 def clone_all():
     metadata = load_aggregate()
     for package in metadata:
-        print(package['name'], package['description'])
+        print(package['name'], package.get('description', "no description"))
         print()
         clone(package)
 
